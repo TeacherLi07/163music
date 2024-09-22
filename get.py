@@ -77,6 +77,7 @@ def get_songid_from_playlist(url):
     
     finally:
         driver.quit()
+
 def download_song_and_lyrics(song_id):
     """
     根据歌曲ID下载歌曲和歌词，保存为MP3和LRC文件。
@@ -134,7 +135,7 @@ def download_song_and_lyrics(song_id):
         mp3_response.raise_for_status()
 
         # 保存 MP3 文件
-        mp3_filename = f"{valid_filename}.mp3"
+        mp3_filename = f".\\data\\{valid_filename}.mp3"
         with open(mp3_filename, "wb") as f:
             f.write(mp3_response.content)
         print(f"MP3 文件已保存为 {mp3_filename}")
@@ -168,7 +169,7 @@ def download_song_and_lyrics(song_id):
 
         if lyrics:
             # 保存歌词为 .lrc 文件
-            lrc_filename = f"{valid_filename}.lrc"
+            lrc_filename = f".\\data\\{valid_filename}.lrc"
             with open(lrc_filename, "w", encoding="utf-8") as f:
                 f.write(lyrics)
             print(f"歌词文件已保存为 {lrc_filename}")
